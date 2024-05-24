@@ -4,22 +4,13 @@
     <input v-model="display" readonly/>
 
     <div class="buttons">
-      <NutBanPhim nut="1" @nutHienThi="hienThiSo"></NutBanPhim>
-      <NutBanPhim nut="2" @nutHienThi="hienThiSo"></NutBanPhim>
-      <NutBanPhim nut="3" @nutHienThi="hienThiSo"></NutBanPhim>
-      <NutBanPhim nut="4" @nutHienThi="hienThiSo"></NutBanPhim>
-      <NutBanPhim nut="5" @nutHienThi="hienThiSo"></NutBanPhim>
-      <NutBanPhim nut="6" @nutHienThi="hienThiSo"></NutBanPhim>
-      <NutBanPhim nut="7" @nutHienThi="hienThiSo"></NutBanPhim>
-      <NutBanPhim nut="8" @nutHienThi="hienThiSo"></NutBanPhim>
-      <NutBanPhim nut="9" @nutHienThi="hienThiSo"></NutBanPhim>
-      <NutBanPhim nut="0" @nutHienThi="hienThiSo"></NutBanPhim>
-      <NutBanPhim nut="+" @nutHienThi="hienThiSo"></NutBanPhim>
-      <NutBanPhim nut="-" @nutHienThi="hienThiSo"></NutBanPhim>
-      <NutBanPhim nut="*" @nutHienThi="hienThiSo"></NutBanPhim>
-      <NutBanPhim nut="/" @nutHienThi="hienThiSo"></NutBanPhim>
-      <NutBanPhim nut="C" @nutHienThi="xoaManHinh"></NutBanPhim>
-      <NutBanPhim nut="=" @nutHienThi="tinhToan"></NutBanPhim>
+      <NutBanPhim v-for="(cacNut, index) in danhSachNut"
+                  :key="index"
+                  :nut="cacNut.nut"
+                  @nutHienThi="hienThiSo"
+                  @nutXoaManHinh="xoaManHinh"
+                  @nutTinhToan="tinhToan">
+      </NutBanPhim>
     </div>
   </div>
 </template>
@@ -34,8 +25,26 @@ export default {
   },
   data () {
     return {
-      display: ''
-    };
+      display: '',
+      danhSachNut:[
+        {nut:'1'},
+        {nut:'2'},
+        {nut:'3'},
+        {nut:'4'},
+        {nut:'5'},
+        {nut:'6'},
+        {nut:'7'},
+        {nut:'8'},
+        {nut:'9'},
+        {nut:'0'},
+        {nut:'+'},
+        {nut:'-'},
+        {nut:'*'},
+        {nut:'/'},
+        {nut:'C'},
+        {nut:'='},
+      ]
+    }
   },
   methods: {
     hienThiSo(nut) {

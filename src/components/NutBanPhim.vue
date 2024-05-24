@@ -1,6 +1,6 @@
 <template>
   <div>
-    <button @click="nhapSoTuNut">{{ nut }}</button>
+    <button @click="nutDuocChon">{{ nut }}</button>
   </div>
 </template>
 
@@ -11,9 +11,20 @@ export default {
     nut: String
   },
   methods: {
-    nhapSoTuNut() {
-      this.$emit('nutHienThi', this.nut);
-    }
+    nutDuocChon() {
+        if (this.nut === 'C')
+          {
+            this.$emit('nutXoaManHinh');
+          }
+        else if (this.nut === '=')
+          {
+            this.$emit('nutTinhToan');
+          }
+        else
+          {
+            this.$emit('nutHienThi', this.nut);
+          }
+    },
   }
 }
 </script>
